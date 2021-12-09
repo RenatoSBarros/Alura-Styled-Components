@@ -1,0 +1,34 @@
+import React , { useState }from "react";
+import { ThemeProvider } from "styled-components";
+import { temaClaro , temaEscuro } from "./Components/Ui/temas";
+
+import Cabecalho from "./Components/Cabecalho";
+import Container from "./Components/Container";
+import { GlobalStyle } from "./Components/GlobalStyle";
+import { TemaButton } from "./Components/Ui";
+import SwitcherTema from "./Components/SwitcherTema";
+
+function App() {
+
+  const [tema , setTema] = useState(true);
+
+    const toggleTema = () => {
+      setTema((tema) => !tema);
+    };
+  
+
+  return (
+      <ThemeProvider theme={tema ? temaClaro : temaEscuro}>
+        <GlobalStyle />
+        <TemaButton onClick={toggleTema}>
+          <SwitcherTema tema={tema}/>
+        </TemaButton>
+        <Cabecalho />
+        <Container />
+      </ThemeProvider>
+      
+    
+  );
+}
+
+export default App;
